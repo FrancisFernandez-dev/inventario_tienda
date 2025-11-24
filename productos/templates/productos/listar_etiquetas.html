@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Etiquetas</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .menu {
+            border: 1px solid #ddd;
+            padding: 15px 25px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 0 8px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        a:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        /* Lista contenedor */
+        .lista {
+            margin-top: 25px;
+            background: #fff;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.05);
+        }
+
+        .item {
+            padding: 12px 10px;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .acciones a {
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        hr {
+            width: 80%;
+            max-width: 500px;
+            margin-top: 30px;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+
+        /* 🌑 DARK MODE */
+        @media (prefers-color-scheme: dark) {
+
+            body {
+                background: #121212;
+                color: #e4e4e4;
+            }
+
+            .menu {
+                background: #1e1e1e;
+                border: 1px solid #444;
+                color: #eaeaea;
+                box-shadow: 0 0 10px rgba(0,0,0,0.4);
+            }
+
+            .lista {
+                background: #1d1d1d;
+                color: #ddd;
+                box-shadow: 0 0 12px rgba(0,0,0,0.5);
+            }
+
+            .item {
+                border-bottom: 1px solid #444;
+            }
+
+            a {
+                color: #e4e4e4;
+            }
+
+            a:hover {
+                background: #e4e4e4;
+                color: #121212;
+            }
+
+            hr {
+                border-top: 1px solid #444;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="menu">
+        MENÚ
+    </div>
+
+    <h1>etiquetas/lista.html</h1>
+
+    <a href="{% url 'crear_etiqueta' %}">Crear etiqueta</a>
+
+    <div class="lista">
+        {% for e in etiquetas %}
+        <div class="item">
+            <span>{{ e.nombre }}</span>
+
+            <span class="acciones">
+                <a href="{% url 'editar_etiqueta' e.id %}">Editar</a>
+                <a href="{% url 'eliminar_etiqueta' e.id %}">Eliminar</a>
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <hr>
+
+    <p>Django admin</p>
+    <a href="/admin/">Ir al Admin</a>
+
+</body>
+</html>

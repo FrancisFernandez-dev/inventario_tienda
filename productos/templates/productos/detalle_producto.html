@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Producto</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .menu {
+            border: 1px solid #ddd;
+            padding: 15px 25px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 0 8px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.05);
+            width: 80%;
+            max-width: 550px;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        h3 {
+            margin-top: 25px;
+            font-size: 20px;
+        }
+
+        p, li {
+            font-size: 15px;
+            margin: 8px 0;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: 0.2s;
+        }
+
+        a:hover {
+            background: #555;
+        }
+
+        /* 🌑 DARK MODE */
+        @media (prefers-color-scheme: dark) {
+
+            body {
+                background: #121212;
+                color: #e4e4e4;
+            }
+
+            .menu {
+                background: #1e1e1e;
+                border: 1px solid #444;
+                color: #eaeaea;
+                box-shadow: 0 0 10px rgba(0,0,0,0.4);
+            }
+
+            .card {
+                background: #1d1d1d;
+                color: #ddd;
+                box-shadow: 0 0 12px rgba(0,0,0,0.5);
+            }
+
+            a {
+                background: #e4e4e4;
+                color: #121212;
+            }
+
+            a:hover {
+                background: #cfcfcf;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="menu">
+        MENÚ
+    </div>
+
+    <div class="card">
+        <h1>detalle.html</h1>
+
+        <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
+        <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+        <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+        <p><strong>Categoría:</strong> {{ producto.categoria.nombre }}</p>
+
+        <h3>Etiquetas</h3>
+        <ul>
+            {% for e in producto.etiquetas.all %}
+                <li>{{ e.nombre }}</li>
+            {% empty %}
+                <li>No tiene etiquetas</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Detalles</h3>
+        {% if detalles %}
+            <p><strong>Dimensión:</strong> {{ detalles.dimension }}</p>
+            <p><strong>Peso:</strong> {{ detalles.peso }}</p>
+        {% else %}
+            <p>No hay detalles registrados.</p>
+        {% endif %}
+
+        <a href="{% url 'editar_producto' producto.id %}">Editar</a>
+    </div>
+
+</body>
+</html>

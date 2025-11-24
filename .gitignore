@@ -1,0 +1,45 @@
+# =========================
+# ENTORNO VIRTUAL
+# =========================
+venv/
+env/
+*/venv/
+*/env/
+
+# =========================
+# ARCHIVOS DE PYTHON
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+
+# =========================
+# DJANGO
+# =========================
+db.sqlite3
+*.log
+
+# Archivos de migraciones compiladas
+migrations/**/__pycache__/
+
+# =========================
+# ARCHIVOS DEL SISTEMA
+# =========================
+Thumbs.db
+Desktop.ini
+
+# =========================
+# EDITORES
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OTROS
+# =========================
+*.bak
+*.tmp
+*.swp
+*.DS_Store

@@ -1,0 +1,7 @@
+<h1>Crear Categoría</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    Nombre: <input type="text" name="nombre"><br><br>
+    <button type="submit">Guardar</button>
+</form>
